@@ -184,6 +184,26 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+mode "monitor" {
+	# move workspaces para telas
+	bindsym $mod+Shift+9 move workspace to output left
+	bindsym $mod+Shift+0 move workspace to output right
+	# move todos workspaces para o laptop
+	bindsym $mod+r for_window [class=".*"] move workspace to output 'eDP-1'
+	# Activate display DP-1 (Monitor 1440p)
+	bindsym $mod+d exec "xrandr --output DP-1 --auto --right-of 'eDP-1'"
+	bindsym $mod+Shift+d exec "xrandr --output DP-1 --off"
+	# Activate presentation
+	bindsym $mod+p exec "xrandr --output 'HDMI-1' --auto --same-as 'eDP-1'"
+	bindsym $mod+Shift+p exec "xrandr --output 'HDMI-1' --off"
+	# back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+
+}
+
+
 # Gaps
 for_window [class=".*"] border pixel 0
 gaps inner 16 
