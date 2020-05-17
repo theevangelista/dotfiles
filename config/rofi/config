@@ -1,1 +1,2 @@
 rofi.theme: ~/.cache/wal/colors-rofi-light
+rofi.font: Iosevka Term Curly 14
