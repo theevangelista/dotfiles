@@ -24,3 +24,10 @@ function wallpaper {
 	feh --bg-max ~/.wallpaper
 	wal -l -i ~/.wallpaper
 }
+
+function i3config {
+	vim ~/.config/i3/config
+}
+function pbconfig {
+	vim ~/.config/polybar/config
+}
