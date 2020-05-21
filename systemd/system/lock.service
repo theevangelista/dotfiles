@@ -1,0 +1,12 @@
+[Unit]
+Description=Lock the screen on resume from suspend
+Before=sleep.target
+
+[Service]
+User=sleepiejohn
+Environment=DISPLAY=:0
+Type=simple
+ExecStart=/usr/bin/i3lock -n
+ExecStartPost=/bin/sleep 1
+[Install]
+WantedBy=suspend.target
