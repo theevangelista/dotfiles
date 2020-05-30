@@ -18,7 +18,7 @@ source $HOME/.config/zplug/config
 
 
 # Aliases and Helpers
-
+alias vim=nvim
 function wallpaper {
 	rm ~/.wallpaper && sudo ln -s $1 ~/.wallpaper
 	feh --bg-max ~/.wallpaper
@@ -31,3 +31,4 @@ function i3config {
 function pbconfig {
 	vim ~/.config/polybar/config
 }
+if [ -e /home/joao/.nix-profile/etc/profile.d/nix.sh ]; then . /home/joao/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
