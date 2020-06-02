@@ -31,4 +31,10 @@ function i3config {
 function pbconfig {
 	vim ~/.config/polybar/config
 }
+
+
+#Nix Pkgs
 if [ -e /home/joao/.nix-profile/etc/profile.d/nix.sh ]; then . /home/joao/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# Apply theme -- always last
+(cat ~/.cache/wal/sequences &)
