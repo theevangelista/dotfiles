@@ -6,36 +6,30 @@ set $mod Mod4
 font pango:Fantasque Sans Mono Nerd Font 14 
 # set wallpaper
 exec --no-startup-id $HOME/.config/i3/wallpaper.sh
+exec --no-startup-id $HOME/.config/polybar/launch.sh
 # set keyboard layouts
 exec --no-startup-id setxkbmap -layout br,us -variant ,intl grp:alt_shift_toggle
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock  -- $HOME/.config/i3/lock.sh 
 # Start idle hook
-exec --no-startup-id exec $HOME/.config/i3/idle-suspend.sh
+#exec --no-startup-id exec $HOME/.config/i3/idle-suspend.sh
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id exec nm-applet
 # Start Polkit agent, that popup that asks for your password.
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-# Power utility daemon
-exec --no-startup-id xfce4-power-manager
-# Updates
-exec --no-startup-id pamac-tray
 # Clipboard manager
 exec --no-startup-id clipit
-# Theme matcher for Firefox
-exec_always --no-startup-id ff-theme-util
-# Fix for jumping mouse cursor
-exec_always --no-startup-id fix_xcursor
 
 # Use amixer to adjust volume in ALSA.
 # Open mixer on a terminal
 bindsym $mod+Shift+p exec --no-startup-id exec kitty -- alsamixer
 # Multimedia keys
-bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
-bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
-bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 #Control playback
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl play-pause
