@@ -1,8 +1,5 @@
 source ~/.zplug/init.zsh
 zplug "plugins/git",   from:oh-my-zsh
-#zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
-zplug mafredri/zsh-async, from:github
-zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 zplug "zsh-users/zsh-completions", from:github
 zplug "zsh-users/zsh-autosuggestions", from:github
 zplug "zsh-users/zsh-history-substring-search", from:github

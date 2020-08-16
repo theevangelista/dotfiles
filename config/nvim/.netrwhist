@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/joao/.config/nvim'
+let g:netrw_dirhist_0='/home/joao/.config/nvim/plugin'
+let g:netrw_dirhist_9='/home/joao/.config/nvim'
+let g:netrw_dirhist_8='/home/joao/Projects/fvmira/lib'
+let g:netrw_dirhist_7='/home/joao/Projects/fvmira'
+let g:netrw_dirhist_6='/home/joao/Projects/fvcanecao'
+let g:netrw_dirhist_5='/home/joao/.config/nvim'
+let g:netrw_dirhist_4='/home/joao/Projects/fvcanecao'
+let g:netrw_dirhist_3='/home/joao/Projects/fvcanecao/lib'
+let g:netrw_dirhist_2='/home/joao/Projects/fvcanecao'

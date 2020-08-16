@@ -14,6 +14,9 @@ export ANDROID_HOME="${HOME}/Android/Sdk"
 export ANDROID_SDK_ROOT="${HOME}/Android/Sdk"
 export JAVA_HOME="${HOME}/.jdks/azul-1.8.0_252"
 export FREETYPE_PROPERTIES="truetype:interpreter-version=38"
+export PURE_CMD_MAX_EXEC_TIME=99999999999999
+export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 # ZPlug
 source $HOME/.config/zplug/config
 # asdf
@@ -22,6 +25,8 @@ source $HOME/.config/zplug/config
 
 # Aliases and Helpers
 alias vim=nvim
+alias kakrc=kak ~/.config/kak/kakrc
+alias e=kak
 alias open=xdg-open
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -37,6 +42,9 @@ alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 # Git Aliases
 alias gpo=git push origin master
+alias gs=git status
+alias gm=git commit
+alias ga=git add
 # Sys
 ## pass options to free ##
 alias meminfo='free -m -l -t'
@@ -48,7 +56,7 @@ alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 # temperature
 alias temp='sensors | grep "Package id 0"'
-
+alias tk='./bin/task'
 
 
 
@@ -78,6 +86,14 @@ function montemp {
 	done
 }
 
+function kittyconfig {
+	vim ~/.config/kitty/kitty.conf
+}
+
+function kakconfig {
+	kak ~/.config/kak/kakrc
+}
+
 function logtemp {
 	log=$HOME/temp.log
 	if [ ! -f "$log" ]; then touch $log; fi
@@ -92,12 +108,22 @@ function note {
 		echo -n $(date +"%d/%m/%Y %H:%M") $1 >> $HOME/.notes
 	fi
 }
+
+function projects {
+	file=$(fd . ~/Projects/ --type directory --maxdepth=1 | fzf -q "$1")
+	cd "$file"
+}
+
+function in-task {
+	curl -sL https://taskfile.dev/install.sh | sh
+	touch ./Taskfile.yml
+}
 #Nix Pkgs
 if [ -e /home/joao/.nix-profile/etc/profile.d/nix.sh ]; then . /home/joao/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+eval "$(starship init zsh)"
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
 fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit
 compinit
-
