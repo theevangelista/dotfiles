@@ -9,24 +9,28 @@ bindkey -e
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/joao/.zshrc'
 # End of lines added by compinstall
+export NOTES_DIR=${HOME}/oghma
 export PATH="${PATH}:${HOME}/.local/bin/"
 export ANDROID_HOME="${HOME}/Android/Sdk"
 export ANDROID_SDK_ROOT="${HOME}/Android/Sdk"
-export JAVA_HOME="${HOME}/.jdks/azul-1.8.0_252"
+export JAVA_HOME="${HOME}/.jdks/azul-1.8.0_265"
 export FREETYPE_PROPERTIES="truetype:interpreter-version=38"
 export PURE_CMD_MAX_EXEC_TIME=99999999999999
 export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export EDITOR=idea
 # ZPlug
 source $HOME/.config/zplug/config
 # asdf
-. $HOME/.asdf/asdf.sh
-
+#. $HOME/.asdf/asdf.sh
+# rust
+source $HOME/.cargo/env
 
 # Aliases and Helpers
 alias vim=nvim
+alias perm=chmod +x
 alias kakrc=kak ~/.config/kak/kakrc
-alias e=kak
+alias e=${EDITOR}
 alias open=xdg-open
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -118,6 +122,18 @@ function in-task {
 	curl -sL https://taskfile.dev/install.sh | sh
 	touch ./Taskfile.yml
 }
+function twt {
+	streamlink twitch.tv/$1 best > /dev/null &
+}
+function take-note {
+	e ${NOTES_DIR}
+}
+function bk-notes {
+	cd ${NOTES_DIR}
+	git add --all
+	git commit -am "(bkp) safety backup"
+	git push origin master
+}
 #Nix Pkgs
 if [ -e /home/joao/.nix-profile/etc/profile.d/nix.sh ]; then . /home/joao/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 eval "$(starship init zsh)"
@@ -127,3 +143,6 @@ fpath=(${ASDF_DIR}/completions $fpath)
 fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit
 compinit
+
+
+

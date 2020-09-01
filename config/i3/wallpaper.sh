@@ -1,5 +1,5 @@
 #!/bin/sh
 
-# Pywall will set the wallpaper as the last used, and re-set the colorschemes. It can detect `feh`
+# feh saves the last command here
 
-wal -R
+sh ~/.fehbg
