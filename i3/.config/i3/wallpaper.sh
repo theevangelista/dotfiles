@@ -2,4 +2,4 @@
 
 # feh saves the last command here
 
-sh ~/.fehbg
+feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"  

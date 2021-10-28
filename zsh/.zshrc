@@ -68,9 +68,10 @@ function sauce {
 	source $HOME/.zshrc
 }
 function wallpaper {
-	rm ~/.wallpaper && sudo ln -s $1 ~/.wallpaper
-	feh --bg-max ~/.wallpaper
-	wal -l -i ~/.wallpaper
+	wal -n -l -i "$@"
+	feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"  
+	cp ~/.cache/wal/colors-rofi-light.rasi ~/dotfiles/rofi/.config/rofi/light.rasi
+	cp ~/.cache/wal/colors-kitty.conf ~/dotfiles/kitty/.config/kitty/wal.conf
 }
 
 function i3config {

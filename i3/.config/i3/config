@@ -3,7 +3,7 @@ exec --no-startup-id exec $HOME/.config/picom/launch.sh
 # Set the leader modifier
 set $mod Mod4
 # i3 font, Polybar uses on its defined configuration
-font pango:Fantasque Sans Mono Nerd Font 14 
+font pango:Roboto 12
 # set wallpaper
 exec --no-startup-id $HOME/.config/i3/wallpaper.sh
 exec --no-startup-id $HOME/.config/polybar/launch.sh
@@ -22,9 +22,11 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # Clipboard manager
 exec --no-startup-id clipit
 
+# open nnn
+bindsym $mod+e exec --no-startup-id exec kitty -- nnn
 # Use amixer to adjust volume in ALSA.
 # Open mixer on a terminal
-bindsym $mod+Shift+p exec --no-startup-id exec kitty -- alsamixer
+bindsym $mod+Shift+m exec --no-startup-id exec kitty -- alsamixer
 # Multimedia keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1%
@@ -57,12 +59,12 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,run,window -show combi -modi combi -lines 10 -eh 2 -width 30 -icon-theme 'La Capitaine' -show-icons" 
+bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,run,window -show combi -modi combi -lines 10 -eh 2 -width 30 -font 'Rec Mono Casual 12'" 
 
 # ----------- WINDOWS
 
 # Set inner/outer gaps
-gaps inner 14
+gaps inner 2
 gaps outer -2
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.

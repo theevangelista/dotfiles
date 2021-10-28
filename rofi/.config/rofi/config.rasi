@@ -1,6 +1,6 @@
 configuration {
  modi: "window,drun,run,combi";
- theme: "nord";
- font: "iosevka medium extended 12";
+ theme: "light";
+ font: "Rec Mono Casual 12";
  combi-modi: "window,drun,run";
  }
